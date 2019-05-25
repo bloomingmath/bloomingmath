@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="mt-5">Non proprio...</h1>
+    <p>
+      La risposta non è quella attesa: avrebbe dovuto essere {{ question.correct_answer }}. Prova a dare un occhiata alla soluzione proposta.
+    </p>
+    <p>
+      {{ question.solution_explained }}
+    </p>
+  </div>
+</div>
+{% endblock %}
