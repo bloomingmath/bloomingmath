@@ -10,7 +10,8 @@ from models import db, Node, User, Question
 app = Flask(__name__)
 app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb+srv://admin:HhXkh5UGNNgrjpk@cluster0-txgpn.mongodb.net/test?retryWrites=true',
-    'connect': True,
+    'connect': False,
+    'maxPoolSize':  1,
 }
 db.init_app(app)
 
