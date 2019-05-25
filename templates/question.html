@@ -6,17 +6,19 @@
     <p>
       {{ question.text }}
     </p>
-    <ul class="list-unstyled">
-      {% for item in question.choices %}
-      <li>
-        <form action="/answer" method="post">
-          <input type="hidden" name="id" value="{{ question.id }}"></input>
-          <input type="hidden" name="answer" value="{{ item }}"></input>
-          <input type="submit" value="{{ item }}"></input>
-        </form>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="container">
+      <div class="row">
+        {% for item in question.choices %}
+        <div class="col-xs-12 col-md-6 col-lg-3">
+          <form action="/answer" method="post">
+            <input type="hidden" name="id" value="{{ question.id }}"></input>
+            <input type="hidden" name="answer" value="{{ item }}"></input>
+            <button type="submit" class="btn btn-light mb-2 btn-block">{{ item }}</button>
+          </form>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
