@@ -3,9 +3,6 @@ from flask_mongoengine import MongoEngine
 
 db = MongoEngine()
 
-# connect('bloomingmath', 'mongodb+srv://admin:HhXkh5UGNNgrjpk@cluster0-txgpn.mongodb.net/test?retryWrites=true')
-
-
 class Node(db.Document):
     title = db.StringField(required=True)
 
@@ -21,3 +18,9 @@ class Question(db.Document):
     correct_answer = db.StringField()
     distractors = db.ListField(db.StringField())
     solution_explained = db.StringField()
+
+class ReactQuestion(db.Document):
+    node = db.ReferenceField(Node)
+    component = db.StringField()
+    text_intro = db.StringField()
+    content = db.ListField(db.DictField())

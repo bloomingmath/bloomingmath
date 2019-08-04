@@ -4,7 +4,7 @@ from flask import Flask
 from flask import request
 from flask import redirect
 from flask import render_template
-from models import db, Node, User, Question
+from models import db, Node, User, Question, ReactQuestion
 
 
 app = Flask(__name__)
@@ -27,6 +27,14 @@ def question(id):
     question = choice(Question.objects(node=id))
     question.choices = sample([ question.correct_answer ] + sample(question.distractors, 3), 4)
     return render_template('question.html', question=question)
+
+@app.route('/rquest/<id>')
+def rquest(id):
+    from random import choice
+    question = choice(ReactQuestion.objects(node=id))
+    component = question.component
+    return render_template('react_question.html', question=question)
+
 
 @app.route('/answer', methods=['POST'])
 def answer():
